@@ -1,13 +1,24 @@
 import React  from 'react';
 import ReactDOM from 'react-dom/client';
 
-// JSX (transpiled before it reached JS Engine) - Parcel - Babel
 
-// JSX => React.createElement => React Element - JS Object => HTMLElement(render)
-const jsxHeading = (
-    <h1 className="heading" tabIndex="5">
-        This is rendered using JSX 🍫
-    </h1>);
+const Title = () => (
+    <h1 id="title">This is a title 🍡</h1>
+)
+
+
+// React Component
+// Class Based Componenet - OLD
+// Funciton Component - NEW (variable should start with capital letter)
+
+const HeadingComponent = () => (
+    <div id="continer">
+        <Title />
+        <h1>From a Functional Component 🍢</h1>
+    </div>
+)
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(jsxHeading);
+
+root.render(<HeadingComponent />);
