@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom/client';
 
 
 const Title = () => (
-    <h1 id="title">This is a title 🍡</h1>
+    <h1 className="head">
+        React using JSX
+    </h1>
 )
-
-
-// React Component
-// Class Based Componenet - OLD
-// Funciton Component - NEW (variable should start with capital letter)
-
 const HeadingComponent = () => (
     <div id="continer">
+        {Title()}
+        <Title></Title>
         <Title />
         <h1>From a Functional Component 🍢</h1>
     </div>
