@@ -1,3 +1,110 @@
-#heading {
-    color: red;
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+    background: #f9f9f9;
 }
+
+/* Logo Styles */
+.logo {
+    width: 200px;
+    height: auto;
+}
+
+/* Navigation Styles */
+.nav-items ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-items ul li {
+    padding: 10px 20px;
+    margin: 0 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.nav-items ul li:hover {
+    background-color: #eaeaea;
+}
+
+/* Container for Cards */
+.res-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Adjusts card spacing evenly */
+    gap: 20px; /* Space between cards */
+    padding: 20px; /* Padding inside the container */
+    box-sizing: border-box;
+}
+
+/* Card Styles */
+.res-card {
+    box-sizing: border-box;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(50% - 40px); /* Adjusts for 2 cards per row, accounting for the gap */
+}
+
+/* Adjust the width for responsive layouts */
+@media (min-width: 768px) {
+    .res-card {
+        width: calc(33.333% - 40px); /* Adjusts for 3 cards per row */
+    }
+}
+
+@media (min-width: 1024px) {
+    .res-card {
+        width: calc(25% - 40px); /* Adjusts for 4 cards per row */
+    }
+}
+
+/* Logo within Card */
+.res-card .res-logo {
+    max-width: 100%; /* Allows logo to be responsive within the card */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Search Bar Styles */
+.search {
+    width: calc(100% - 40px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #eaeaea;
+    background: #f9f9f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    color: #333;
+    transition: border-color 0.3s;
+}
+
+.search:focus {
+    border-color: #999;
+    outline: none;
+}
+
+
+/* Hover Effect on Logo */
+.res-logo:hover {
+    transform: scale(1.05); /* Slightly enlarges the logo on hover */
+    transition: transform 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Hover Effect on Card */
+.res-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover for a lifting effect */
+} 
