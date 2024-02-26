@@ -35,6 +35,40 @@
     background-color: #eaeaea;
 }
 
+.btn-login-logout {
+    padding: 10px 20px; /* Consistent with the padding of nav items */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Matching font family */
+    font-size: 1em; /* Matching font size */
+    color: #333; /* Text color for contrast */
+    background-color: #f9f9f9; /* To match the header background or use a distinct color for emphasis */
+    border: 1px solid #eaeaea; /* Light border to match other elements */
+    cursor: pointer; /* Indicates the button is clickable */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    border-radius: 4px; /* Rounded corners */
+    margin-left: 10px; /* Add some left margin if necessary */
+    outline: none; /* Remove outline to maintain style on focus */
+    text-decoration: none; /* In case it's a link */
+}
+
+.btn-login-logout:hover {
+    background-color: #eaeaea; /* Slightly darker on hover for interaction feedback */
+}
+
+/* To vertically align the button with the list items */
+.nav-items ul {
+    display: flex;
+    align-items: center; /* Center-align the items vertically */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* To ensure list items and button align properly */
+.nav-items li, .nav-items .btn-login-logout {
+    display: inline-block; /* Align with other inline or inline-block elements */
+    vertical-align: middle; /* Center-align vertically if different heights are present */
+}
+
 /* Container for Cards */
 .res-container {
     display: flex;

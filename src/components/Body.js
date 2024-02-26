@@ -18,11 +18,9 @@ export const Body = () => {
         setStateRestaurantsList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
-    if(stateRestaurantsList.length === 0){
-        return <Shimmer count={16}/>
-    }
 
-    return (
+    // Conditional rendering
+    return stateRestaurantsList.length === 0 ? <Shimmer count={16}/> :(
         <div className='body'>
             <div className='filter'>
                 <button className="filter-btn" onClick={()=>{
