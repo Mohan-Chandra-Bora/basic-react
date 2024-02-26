@@ -36,3 +36,16 @@ Footer
     - Address
     - Contact
     - Links
+
+# React Hooks
+    (Normal JS utility functions)
+    - useState() - used to generate state variables
+    - useEffect()
+
+# React works
+    - Reconciliation algorithm (also known as React Fibre)
+    - React Fibre came in React v16
+
+# Virtual DOM
+    - Not actual DOM (This is the react element === normal JS Object)
+    - Representation of actual DOM

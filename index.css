@@ -108,3 +108,24 @@
 .res-card:hover {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover for a lifting effect */
 } 
+
+.filter-btn {
+    padding: 10px 20px; /* Consistent horizontal padding with the nav items */
+    margin: 0 10px; /* Optional margin for spacing if button is near other elements */
+    background-color: #f9f9f9; /* Matching the header background color */
+    border: 1px solid #eaeaea; /* Matching the border styling from other elements */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font */
+    font-size: 1em; /* Matching font size with search input */
+    color: #333; /* Consistent text color */
+    cursor: pointer; /* Indicates the element is clickable */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    text-align: center; /* Ensures the text is centered */
+    display: inline-block; /* Allows the use of margin and proper spacing */
+    border-radius: 4px; /* Optional: rounded corners for the button */
+    text-decoration: none; /* In case .filter-btn is applied to an <a> tag */
+}
+
+.filter-btn:hover {
+    background-color: #eaeaea; /* Hover effect color change */
+    /* Optional: transform: scale(1.05); if you want a subtle 'pop' effect on hover */
+}
