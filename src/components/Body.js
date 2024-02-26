@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { restaurantsList } from "../utils/mockData";
 import { RestaurantCard } from "./restaurantCard";
 import { SWIGGY_API } from "../utils/constants";
+import Shimmer from "./Shimmer";
 export const Body = () => {
     let [stateRestaurantsList, setStateRestaurantsList] = useState([])
 
@@ -15,6 +16,10 @@ export const Body = () => {
         const json = await data.json();
 
         setStateRestaurantsList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+
+    if(stateRestaurantsList.length === 0){
+        return <Shimmer />
     }
 
     return (

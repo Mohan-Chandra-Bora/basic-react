@@ -129,3 +129,68 @@
     background-color: #eaeaea; /* Hover effect color change */
     /* Optional: transform: scale(1.05); if you want a subtle 'pop' effect on hover */
 }
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Adjust the gap as needed */
+    justify-content: center; /* Center the cards within the container */
+    padding: 20px; /* Padding inside the container, consistent with .res-container */
+  }
+  
+  .shimmer-card {
+    height: 200px; /* Adjust the height to match your content cards */
+    flex: 1 0 calc(25% - 40px); /* Adjust the width to match the layout of your content cards, considering the number of cards in a row */
+    margin: 10px; /* Adjust margin as needed */
+    background: #f6f7f8; /* Light grey background */
+    position: relative;
+    overflow: hidden; /* Ensure the gradient is contained within the cards */
+    border-radius: 4px; /* Optional: rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Consistent with other card shadows */
+}
+
+/* Shimmer effect animation */
+@keyframes shimmer {
+    0% {
+        background-position: -468px 0;
+    }
+    100% {
+        background-position: 468px 0;
+    }
+}
+
+/* Apply the animation to the shimmer-card */
+.shimmer-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to right,
+        #f6f7f8 0%,
+        #edeef1 50%,
+        #f6f7f8 100%
+    );
+    background-repeat: no-repeat;
+    background-size: 800px 200px; /* Width and height of the shimmer effect */
+    animation: shimmer 1s linear infinite;
+}
+
+/* Responsive adjustments for different screen sizes */
+@media (min-width: 768px) {
+    .shimmer-card {
+        /* Adjusts for 3 cards per row */
+        flex: 0 0 calc(33.333% - 40px);
+        max-width: calc(33.333% - 40px);
+    }
+}
+
+@media (min-width: 1024px) {
+    .shimmer-card {
+        /* Adjusts for 4 cards per row */
+        flex: 0 0 calc(25% - 40px);
+        max-width: calc(25% - 40px);
+    }
+}
