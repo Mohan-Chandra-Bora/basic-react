@@ -19,3 +19,20 @@
 - Https
 - Tree shaking - remove unused code
 - prod deployment - npx parcel build index.html (delete main:"app.js" from package.json )
+
+
+## Food Ordering App layout
+Header
+    - Logo
+    - Nav Items
+Body
+    - Search
+    - RestaurantContainer
+        - RestaurantCard
+            - Img
+            - Name of Restaurant, Start Rating, Cusines, Delivery Time
+Footer
+    - Copyrigts
+    - Address
+    - Contact
+    - Links
