@@ -19,7 +19,7 @@ export const Body = () => {
     }
 
     if(stateRestaurantsList.length === 0){
-        return <Shimmer />
+        return <Shimmer count={16}/>
     }
 
     return (
