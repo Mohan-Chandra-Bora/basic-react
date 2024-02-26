@@ -40,7 +40,11 @@ Footer
 # React Hooks
     (Normal JS utility functions)
     - useState() - used to generate state variables
-    - useEffect()
+    - useEffect() - it takes two arguments 
+        - callback function
+        - dependency array
+        - called post the Component is rendered
+        - Page Loads -> Renders Skeleton -> API Call -> Renders the full page (useEffect can be useful as it can be called post componenet render)
 
 # React works
     - Reconciliation algorithm (also known as React Fibre)

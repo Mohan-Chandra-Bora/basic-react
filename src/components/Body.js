@@ -1,8 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { restaurantsList } from "../utils/mockData";
 import { RestaurantCard } from "./restaurantCard";
+import { SWIGGY_API } from "../utils/constants";
 export const Body = () => {
-    let [stateRestaurantsList, setStateRestaurantsList] = useState(restaurantsList)
+    let [stateRestaurantsList, setStateRestaurantsList] = useState([])
+
+    useEffect(()=>{
+        fetchData();
+    },[])
+
+    const fetchData = async () => {
+        const data = await fetch(`${SWIGGY_API}`);
+
+        const json = await data.json();
+
+        setStateRestaurantsList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    }
+
     return (
         <div className='body'>
             <div className='filter'>
