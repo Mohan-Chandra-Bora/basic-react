@@ -45,6 +45,16 @@ Footer
         - dependency array
         - called post the Component is rendered
         - Page Loads -> Renders Skeleton -> API Call -> Renders the full page (useEffect can be useful as it can be called post componenet render)
+        - When deoendency array is not present, useEffect is called after every render
+        - When empty dependency array = [] => useEffect called only during intial render
+        - If dependency array is having value of lets say the useState variable = [btnName] => useEffect will render when btnName useState changes
+
+# Best Practices for Hooks
+    - Never create useState() outside of component => useState is used to create local state variables inside component
+    - Always create state variables at the top of the component
+    - Never create useState() inside if else => this can create inconsistencies 
+    - Never create useState() inside for loop => this can create inconsistencies 
+    - Never create useState() inside a function => this can create inconsistencies 
 
 # React works
     - Reconciliation algorithm (also known as React Fibre)
