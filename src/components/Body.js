@@ -5,6 +5,8 @@ import { SWIGGY_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 export const Body = () => {
     let [stateRestaurantsList, setStateRestaurantsList] = useState([])
+    let [filteredRestaurantList, setFilteredRestaurantList] = useState([])
+    let [searchText, setSearchText] = useState("");
 
     useEffect(()=>{
         fetchData();
@@ -16,15 +18,27 @@ export const Body = () => {
         const json = await data.json();
 
         setStateRestaurantsList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
 
     // Conditional rendering
     return stateRestaurantsList.length === 0 ? <Shimmer count={16}/> :(
         <div className='body'>
+            <div className="search">
+                <input type="text" className="search-text" value={searchText} onChange={(e)=>{
+                    setSearchText(e.target.value)
+                }}></input>
+                <button className="search-button" onClick={()=>{
+                    console.log({searchText});
+                    const filteredRestaurantList = stateRestaurantsList.filter((res)=> res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+                    setFilteredRestaurantList(filteredRestaurantList);
+
+                }}>Search</button>
+            </div>
             <div className='filter'>
                 <button className="filter-btn" onClick={()=>{
-                    const filteredListOnRating = restaurantsList.filter(res => res.info.avgRating >= 4.8);
+                    const filteredListOnRating = stateRestaurantsList.filter(res => res.info.avgRating >= 4.8);
                     setStateRestaurantsList(filteredListOnRating);
                 }}>Top Rated Restaurants</button>
             </div>
@@ -34,7 +48,7 @@ export const Body = () => {
                 <RestaurantCard resData= {JSON.parse(restaurantsArray)[1]} />
                 <RestaurantCard resData= {JSON.parse(restaurantsArray)[2]}/> */
                 // Not using keys is bad practice <<< Index keys (Anti pattern) <<<<< Unique keys (Best Practice)
-                stateRestaurantsList.map(restaurant => <RestaurantCard key={restaurant.info.id} resData={restaurant}/>)
+                filteredRestaurantList.map(restaurant => <RestaurantCard key={restaurant.info.id} resData={restaurant}/>)
                 }
             </div>
 

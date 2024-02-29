@@ -228,3 +228,36 @@
         max-width: calc(25% - 40px);
     }
 }
+
+/* Search input text styles */
+.search-text {
+    padding: 10px 15px; /* Comfortable padding for text input */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font family */
+    font-size: 1em; /* Matching font size */
+    border: 1px solid #eaeaea; /* Light border similar to other elements */
+    border-radius: 4px 0 0 4px; /* Rounded corners on the left side */
+    flex-grow: 1; /* Allows the input to grow and fill available space */
+    outline: none; /* Removes the outline to maintain style on focus */
+}
+
+.search-text:focus {
+    border-color: #999; /* Slightly darker border when focused */
+}
+
+/* Search button styles */
+.search-button {
+    padding: 10px 20px; /* Padding to match search-text height */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font family */
+    font-size: 1em; /* Matching font size */
+    color: #333; /* Text color for contrast */
+    background-color: #f9f9f9; /* To match the body background or use a distinct color */
+    border: 1px solid #eaeaea; /* Light border to match search-text input */
+    border-radius: 0 4px 4px 0; /* Rounded corners on the right side */
+    cursor: pointer; /* Indicates the button is clickable */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    outline: none; /* Removes the outline to maintain style on focus */
+}
+
+.search-button:hover {
+    background-color: #eaeaea; /* Slightly darker on hover for interaction feedback */
+}
