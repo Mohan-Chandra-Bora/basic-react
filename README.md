@@ -63,3 +63,7 @@ Footer
 # Virtual DOM
     - Not actual DOM (This is the react element === normal JS Object)
     - Representation of actual DOM
+
+# 2 types of routing
+    - Client Side Routing
+    - Server Side Routing

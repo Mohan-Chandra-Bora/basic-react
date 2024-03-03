@@ -3,6 +3,7 @@ import { restaurantsList } from "../utils/mockData";
 import { RestaurantCard } from "./restaurantCard";
 import { SWIGGY_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import {Link} from 'react-router-dom';
 export const Body = () => {
     let [stateRestaurantsList, setStateRestaurantsList] = useState([])
     let [filteredRestaurantList, setFilteredRestaurantList] = useState([])
@@ -48,7 +49,9 @@ export const Body = () => {
                 <RestaurantCard resData= {JSON.parse(restaurantsArray)[1]} />
                 <RestaurantCard resData= {JSON.parse(restaurantsArray)[2]}/> */
                 // Not using keys is bad practice <<< Index keys (Anti pattern) <<<<< Unique keys (Best Practice)
-                filteredRestaurantList.map(restaurant => <RestaurantCard key={restaurant.info.id} resData={restaurant}/>)
+                filteredRestaurantList.map(restaurant =>
+                    <Link key={restaurant.info.id} to={"restaurant/"+restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>
+                    )
                 }
             </div>
 
