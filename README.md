@@ -67,3 +67,6 @@ Footer
 # 2 types of routing
     - Client Side Routing
     - Server Side Routing
+
+# React Life Cycle Management Diagram
+    - https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/

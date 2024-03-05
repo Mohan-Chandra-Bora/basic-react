@@ -261,3 +261,8 @@
 .search-button:hover {
     background-color: #eaeaea; /* Slightly darker on hover for interaction feedback */
 }
+
+.user-card {
+    padding: 10px;
+    border: 1px solid black;
+}
