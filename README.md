@@ -70,3 +70,16 @@ Footer
 
 # React Life Cycle Management Diagram
     - https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+# componentDidMount is used for API calls in Class based component.
+    - This is not equal to useEffet in functional components.
+
+# componentWillUnmount equivalent in functional component
+    - /**
+    *   useEffect(()=>{
+        <!-- API Call and other things -->
+        return () = {
+        <!--This is where we cleanup anything that needs to go away during un-mount  -->
+        }
+    })
+    */
