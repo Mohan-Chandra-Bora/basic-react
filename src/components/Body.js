@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { restaurantsList } from "../utils/mockData";
-import { RestaurantCard } from "./restaurantCard";
+import { RestaurantCard, withAggregatedDiscountInfo } from "./RestaurantCard";
 import { SWIGGY_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import {Link} from 'react-router-dom';
@@ -9,6 +8,7 @@ export const Body = () => {
     let [filteredRestaurantList, setFilteredRestaurantList] = useState([])
     let [searchText, setSearchText] = useState("");
 
+    console.log("Body Rendered : ", stateRestaurantsList);
     useEffect(()=>{
         fetchData();
     },[])
@@ -22,6 +22,7 @@ export const Body = () => {
         setFilteredRestaurantList(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
+    const AggregatedDiscountInfoCart = withAggregatedDiscountInfo(RestaurantCard);
 
     // Conditional rendering
     return stateRestaurantsList.length === 0 ? <Shimmer count={16}/> :(
@@ -53,7 +54,10 @@ export const Body = () => {
                 <RestaurantCard resData= {JSON.parse(restaurantsArray)[2]}/> */
                 // Not using keys is bad practice <<< Index keys (Anti pattern) <<<<< Unique keys (Best Practice)
                 filteredRestaurantList.map(restaurant =>
-                    <Link key={restaurant.info.id} to={"restaurant/"+restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>
+                    <Link key={restaurant.info.id} to={"restaurant/"+restaurant.info.id}>
+                        {/* <RestaurantCard resData={restaurant}/> */}
+                        <AggregatedDiscountInfoCart resData={restaurant} />
+                    </Link>
                     )
                 }
             </div>

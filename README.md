@@ -83,3 +83,5 @@ Footer
         }
     })
     */
+
+# Higher-Order component is component that takes a component and returns a new component
