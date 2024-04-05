@@ -26,12 +26,19 @@ export const RestaurantCard = (props) => {
 export const withAggregatedDiscountInfo = (WrappedComponentRestaurantCard) => {
     return (props) => {
         const { resData } = props;
-        const {header, subHeader} = resData?.info?.aggregatedDiscountInfoV3;
-        return (
-            <div>
-                <label className="absolute bg-black text-white m-2 p-2 rounded-lg">{`${header }` + `${subHeader != undefined ? subHeader : ""}`}</label>
-                <WrappedComponentRestaurantCard {...props} />
-            </div>
-        )
+        if (resData?.info?.aggregatedDiscountInfoV3) {
+            const { header, subHeader } = resData.info.aggregatedDiscountInfoV3;
+            return (
+                <div>
+                    <label className="absolute bg-black text-white m-2 p-2 rounded-lg">{`${header }` + `${subHeader != undefined ? subHeader : ""}`}</label>
+                    <WrappedComponentRestaurantCard {...props} />
+                </div>
+            )
+        } else {
+            // Handle the case where aggregatedDiscountInfoV3 is not available.
+            console.log('aggregatedDiscountInfoV3 is undefined' + resData.info.id);
+          }
+       
+        
     }
 }
