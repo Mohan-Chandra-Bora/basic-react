@@ -84,4 +84,81 @@ Footer
     })
     */
 
-# Higher-Order component is component that takes a component and returns a new component
+# (Data related - Data is the new Oil) Higher-Order component is component that takes a component and returns a new component - it is also a pure function, meaning it doesn't modify the original component
+
+# (Data related - Data is the new Oil) Controlled and Uncontrolled components
+    - When a component (RestaurantCategory for its items accordion to open only one item and close when another item is opened) is controlled by another component (RestaurantMenu by passing the showItem state), then it is called Controlled component
+    - Restaurant Menu is uncontrolled component
+
+# (Data related - Data is the new Oil) Lifting the state up
+    - This is when we pass the state from parent (RestaurantMenu) to child (RestaurantCategory)
+    - And then, the state is manipulated from the child back to parent
+
+# (Data related - Data is the new Oil)  Props drilling
+    - React has one way data flow (top to bottom)
+    - Pass data from a parent to a grand child by using the intermidiate parents of the child
+    - This is not a nice way of handing the use-case, think about scenarios where there are ~7/8 parent child depth
+    - Soultion is to use React Context
+
+# (Data related - Data is the new Oil) React Context
+    - For class based component, there are no Hooks, so use `<UserContext.Consumer>{()=> callback to use the context data} </UserContext.Consumer>` (check AboutUs.js)
+    - for Function based components, useContext Hooks is used (check Header.js)
+    - to generate the context, createContext is provided by React (check UserContext.js)
+    - To update the context data, example, we want to update the loggedInUser post authentication, we can wrap the component where we want to provide/update the user.
+
+    - Example, if we wrap the complete App like below, it will have the loggedInUser updated everywhere
+        <div className="app">
+            <UserContext.Provider value={loggedInUser: "useEffect that stores the useState post authentication"}>
+                <Header />
+                <Outlet />
+            </UserContext.Provider>
+        </div>
+
+    -Example, if we wrap the only Header like below, it will have the loggedInUser updated for Header and rest will have Default user
+        <div className="app">
+            <UserContext.Provider value={loggedInUser: "useEffect that stores the useState post authentication"}>
+                <Header />
+            </UserContext.Provider>
+            <Outlet />
+        </div>
+    
+    - Example
+        // Defautl User
+        <UserContext.Provider value={{loggedInUser: userName}}>
+            {/* Mohan Bora */}
+        <div className='App'> 
+            <UserContext.Provider value={{loggedInUser: "Another User"}}>
+                {/* Another User */}
+                <Header />
+            </UserContext.Provider>   
+            <Outlet />        
+        </div>
+        </UserContext.Provider>
+
+    - The lazy loaded files will also get the updated data in React Context if we try to change it
+
+
+# Redux (Let's build our store)
+    - Redux should only be used for larege scale applications
+    - Most of the usecases can be managed using UseContext
+    - Redux and React are two separate libraries
+    - Redux is not the only library to manage states. Example -Zustand
+    - Redux is used manage the sate of the application
+    - Another advantage is that it makes the applicaiton easier to debug (Redux chrome extensions)
+
+
+# Redux Architecture (Let's build our store)
+    - Redux Toolkit (modern Redux library) store is kind of a big Object store kept at a global central place
+    - Any component can access from and to the store
+    - Redux can use only a single object to store all the application data. Although it is fine to have a single object to store everything, it can become clumsy; To mitigate this, Redux uses SLICES
+    - What benifits can Slices bring
+        - Logical partitions are slices - Example cart slice, User Slice, etc
+        - We cannot write/add/modify data directly to the Cart slice from the functional component (in react)
+            - When we click on the ADD button, it will DISPATCH an ACTION
+            - And the it calls a FUNCTION (Also known as REDUCER)
+            - And this FUNCTION  MODIFIES the SLICE
+            - Function component (event) => Dispatches and action => Reducer function is called => Modifies the Slice in Redux store
+        - How to READ the data from Redux store
+            - We need to use SELECTOR to read the data from Slice
+            - This is also known as SUBSCRIBING to the store
+            - The functional component in React is subsribed to the store. So when the Slice updates, the functional component updates automatically

@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { CDN_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 export const RestaurantCard = (props) => {
     const { resData } = props;
-    const {cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resData?.info 
+    const {cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resData?.info
+    const {loggedInUser} = useContext(UserContext);
 
     if (!resData) {
         // You can return null or a loading spinner here
@@ -19,6 +22,7 @@ export const RestaurantCard = (props) => {
             <h4>{avgRating}</h4>
             <h4>{costForTwo}</h4>
             <h4>{sla.slaString}</h4>
+            <h4>User: {loggedInUser}</h4>
         </div>
     )
 }

@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { RestaurantCard, withAggregatedDiscountInfo } from "./RestaurantCard";
 import { SWIGGY_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import {Link} from 'react-router-dom';
+import UserContext from "../utils/UserContext";
 export const Body = () => {
     let [stateRestaurantsList, setStateRestaurantsList] = useState([])
     let [filteredRestaurantList, setFilteredRestaurantList] = useState([])
@@ -23,6 +24,8 @@ export const Body = () => {
     }
 
     const AggregatedDiscountInfoCart = withAggregatedDiscountInfo(RestaurantCard);
+
+    const {loggedInUser, setUserName} = useContext(UserContext);
 
     // Conditional rendering
     return stateRestaurantsList.length === 0 ? <Shimmer count={16}/> :(
@@ -45,6 +48,14 @@ export const Body = () => {
                         const filteredListOnRating = stateRestaurantsList.filter(res => res.info.avgRating >= 4.8);
                         setStateRestaurantsList(filteredListOnRating);
                     }}>Top Rated Restaurants</button>
+                </div>
+
+                <div className="search m-4 p-4 flex items-center">
+                    <label>User Name: </label>
+                    <input className="border border-black p-2" 
+                    value={loggedInUser}
+                    onChange={(e)=> setUserName(e.target.value)}
+                    />
                 </div>
             </div>
             <div className='flex flex-wrap'>
