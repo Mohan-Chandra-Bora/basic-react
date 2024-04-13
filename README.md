@@ -162,3 +162,18 @@ Footer
             - We need to use SELECTOR to read the data from Slice
             - This is also known as SUBSCRIBING to the store
             - The functional component in React is subsribed to the store. So when the Slice updates, the functional component updates automatically
+    - Performance tip - in useSelector (to read data from store) - ONLY subscribe the needed data
+    - In old Redux, the State was not recommended to be MUTATED => it prescribed to create a tempState and return that
+    - But in new Redux (Redux ToolKit) the state only gets mutated, returning is not mandatory
+    - React manages the state management that was done the old way now internally
+    - Behind the seen, Redux uses Immer library to manage the immutable states
+    - The state can be returned from the reducers in slice and Redux will manage the state using immer
+        -  clearCart: (state) => {
+            state.items.length = 0;
+            }
+    - Or a new return can be used and RTK manages the return state
+        -  clearCart: (state) => {
+            return {items: []};
+            }
+
+    - RTK query
