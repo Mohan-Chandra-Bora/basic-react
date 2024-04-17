@@ -177,3 +177,15 @@ Footer
             }
 
     - RTK query
+
+# Testing the application
+    - Install React Testing Library
+    - Install Jest
+    - Install Babel dependencies (required when using Jest with Babel)
+    - Configure Babel (suggested by Babel for Jest)
+    - Parcel also uses Babel internally - So there will be conflicts when we are using Babel configuration - use .parcelrc to use the .babel.config.jsnpm 
+    - Jest configuration unsing npx jest --init
+    - Install jest-environment-jsdom (post jest 28 jsdom needs to be added separately)
+    - Install @babel/preset-react - to make JSX work in test cases
+    - Include @babel/preset-react  in .babel.config.js
+    - Install @testing-library/jest-dom

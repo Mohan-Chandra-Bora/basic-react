@@ -9,7 +9,6 @@ export const Body = () => {
     let [filteredRestaurantList, setFilteredRestaurantList] = useState([])
     let [searchText, setSearchText] = useState("");
 
-    console.log("Body Rendered : ", stateRestaurantsList);
     useEffect(()=>{
         fetchData();
     },[])
@@ -28,12 +27,12 @@ export const Body = () => {
     const {loggedInUser, setUserName} = useContext(UserContext);
 
     // Conditional rendering
-    return stateRestaurantsList.length === 0 ? <Shimmer count={16}/> :(
+    return stateRestaurantsList.length === 0 ? (<Shimmer count={16}/>) :(
         <div className='body'>
             <div className="flex">
                 <div className="search m-4 p-4">
                     <div className="m-4 p-4">
-                    <input type="text" className="border border-solid border-black" value={searchText} onChange={(e)=>{
+                    <input type="text" data-testid="searchInput" className="border border-solid border-black" value={searchText} onChange={(e)=>{
                         setSearchText(e.target.value)
                     }}></input>
                     <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={()=>{
@@ -45,8 +44,8 @@ export const Body = () => {
                 </div>
                 <div className="search m-4 p-4 flex items-center">
                     <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={()=>{
-                        const filteredListOnRating = stateRestaurantsList.filter(res => res.info.avgRating >= 4.8);
-                        setStateRestaurantsList(filteredListOnRating);
+                        const filteredListOnRating = stateRestaurantsList.filter(res => res.info.avgRating >= 4.4);
+                        setFilteredRestaurantList(filteredListOnRating);
                     }}>Top Rated Restaurants</button>
                 </div>
 

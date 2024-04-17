@@ -9,11 +9,9 @@ export const Header = () => {
     const [btnName, setBtnName] = useState("login");
     const onlineStatus = useOnlineStatus();
     const {loggedInUser} = useContext(UserContext);
-    console.log(loggedInUser);
 
     // Subsribing to the store using a Selector
     const cartItems = useSelector((store)=> store.cart.items);
-    console.log(cartItems)
 
 
     return (

@@ -3,6 +3,7 @@ import { CDN_URL } from "../utils/constants";
 import UserContext from "../utils/UserContext";
 
 export const RestaurantCard = (props) => {
+    
     const { resData } = props;
     const {cloudinaryImageId, name, cuisines, avgRating, costForTwo, sla } = resData?.info
     const {loggedInUser} = useContext(UserContext);
@@ -12,7 +13,7 @@ export const RestaurantCard = (props) => {
         return null;
     }
     return (
-        <div className="m-4 p-4 w-52 rounded-lg bg-gray-100 hover:bg-gray-200">
+        <div data-testid="resCard" className="m-4 p-4 w-52 rounded-lg bg-gray-100 hover:bg-gray-200">
             <img className='px-2 py-1 m-1 rounded-md align-middle'
                 alt="res-logo"
                 src = {CDN_URL+ cloudinaryImageId}
@@ -34,7 +35,7 @@ export const withAggregatedDiscountInfo = (WrappedComponentRestaurantCard) => {
             const { header, subHeader } = resData.info.aggregatedDiscountInfoV3;
             return (
                 <div>
-                    <label className="absolute bg-black text-white m-2 p-2 rounded-lg">{`${header }` + `${subHeader != undefined ? subHeader : ""}`}</label>
+                    <label className="absolute bg-black text-white m-2 p-2 rounded-lg">{`${header} ` + `${subHeader != undefined ? subHeader : ""}`}</label>
                     <WrappedComponentRestaurantCard {...props} />
                 </div>
             )
